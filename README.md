@@ -47,6 +47,14 @@ workque --yesterday
 # This will jump back to Friday's note if it's Monday today!
 ```
 
+If you're kind of nerd and you have no life. You would rather work over the weekend than hanging out with folks, so you should enable the **hardcore** mode which will stop skipping weekend for you.
+
+Add this to your `.bash_profile`
+
+```sh
+export WORQUE_HARDCORE=true
+```
+
 You can also explicitly specify the file path
 
 ```sh
