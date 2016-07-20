@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'date'
+require 'worque'
+
+Worque.configure do |config|
+  OptionParser.new do |opts|
+    opts.banner = "Usage: worque [options]"
+
+    opts.on("-h", "--help", 'Print this help') do
+      puts opts
+      exit
+    end
+
+    opts.on("--today", "Create and return the file name") do
+      config[:mode] = :today
+    end
+
+    opts.on("--yesterday", "Create and return the file name") do
+      config[:mode] = :yesterday
+    end
+
+    opts.on("--path", "Create and return the file name") do |path|
+      config[:path] = path
+    end
+  end.parse!
+end
+
+$stdout.puts Worque::Command.run(Worque.configs)
