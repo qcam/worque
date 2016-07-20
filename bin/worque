@@ -21,10 +21,14 @@ Worque.configure do |config|
       config[:mode] = :yesterday
     end
 
-    opts.on("--path", "Create and return the file name") do |path|
-      config[:path] = path
+    opts.on("-pPATH", "--path PATH", "Path to your notes directory") do |path|
+      config[:path] = path || ENV['WORQUE_PATH']
     end
   end.parse!
+end
+
+if !Worque.configs[:path] || Worque.configs[:path] == ''
+  abort "--path or WORQUE_PATH must be set. Use worque --help to see all options."
 end
 
 $stdout.puts Worque::Command.run(Worque.configs)
