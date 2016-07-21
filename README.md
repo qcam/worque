@@ -77,6 +77,26 @@ alias today="vim $(worque todo) +':cd $WORQUE_PATH'"
 alias ytd="vim $(worque todo) +':cd $WORQUE_PATH'"
 ```
 
+#### `worque todo`
+
+Please remember to add `SLACK_API_TOKEN` in your `.bash_profile`
+
+```sh
+export SLACK_API_TOKEN=very-$3Cr3T
+```
+
+Then the note for today will be automatically posted to the channel specified.
+
+```sh
+worque push --channel=daily-report
+```
+
+Alternatively, you can choose to push the note for yesterday
+
+```sh
+worque push --channel daily-report --for yesterday
+```
+
 ### VIM Integration
 
 Add this to your VIM plugin manager
