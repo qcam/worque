@@ -1,42 +1,42 @@
 require 'worque/utils/command'
+require 'worque/utils/business_day'
 
 module Worque
   module Command
     class Todo
-
       def initialize(options)
         @options = options
       end
 
       def call
-        validate_options!
-
         Worque::Utils::Command.mkdir(options.path)
 
-        file = case options.mode.to_sym
-               when :today
-                 filename(Date.today)
-               when :yesterday
-                 filename(Worque::BusinessDay.previous(Date.today))
-               when :yesterday_hardcore
-                 filename(Worque::BusinessDay.previous_continuous(Date.today))
-               end
-        Worque::Utils::Command.touch file
-        return file
+        filename(date_for).tap do |f|
+          Worque::Utils::Command.touch f
+        end
+      end
+
+      def self.run(options)
+        Worque::Command::Todo.new(
+          Worque::Command::Todo::Options.new(options)
+        ).call()
       end
 
       private
 
       attr_reader :options
 
-      def validate_options!
-        errors = options.validate
-
-        raise errors.join(', ') if errors.size > 0
+      def date_for
+        case options.for.to_sym
+        when :today
+          Date.today
+        when :yesterday
+          Worque::Utils::BusinessDay.previous(Date.today, options.skip_weekend?)
+        end
       end
 
       def filename(date)
-        "#{options.path}/checklist-#{date}.md"
+        "#{options.path}/notes-#{date}.md"
       end
     end
   end

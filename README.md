@@ -20,10 +20,12 @@ Install it by
 
 ### CLI
 
+#### `worque todo`
+
 Add this to your `.bash_profile`
 
 ```sh
-export WORQUE_PATH='/path/to/your/lovely/notes'
+export WORQUE_PATH='/path/to/your/notes'
 ```
 
 I often map it to my Dropbox like this
@@ -35,46 +37,44 @@ export WORQUE_PATH='~/Dropbox/Notes/Todos'
 Then executing the command below will create a today's note for you
 
 ```sh
-worque --today
-# ~/notes/checklist-2016-07-19.md
+worque todo --for today
+# ~/notes/notes-2016-07-19.md
 ```
 
 Or look back what's done yesterday.
 
 ```sh
-workque --yesterday
+workque todo --for=yesterday
 # ~/notes/checklist-2016-07-18.md
 # This will jump back to Friday's note if it's Monday today!
 ```
 
 If you're kind of nerd and you have no life. You would rather work over the weekend than hanging out with folks, so you should enable the **hardcore** mode which will stop skipping weekend for you.
 
-Add this to your `.bash_profile`
-
 ```sh
-export WORQUE_HARDCORE=true
+worque todo --for yesterday --no-skip-weekend
 ```
 
 You can also explicitly specify the file path
 
 ```sh
-worque --today --path ~/path/to/your/notes
+worque todo --for today --path ~/path/to/your/notes
 ```
 
 It's chain-able with other commands
 
 ```sh
 vim worque
-vim $(worque --yesterday)
-cat $(worque --yesterday) | grep pending
+vim $(worque todo --for yesterday)
+cat $(worque todo --for=yesterday) | grep pending
 ```
 
 Personally I alias it like `today` like this, so vim will automatically open the
 file when I type `today`
 
 ```sh
-alias today="vim $(worque --today) +':cd $WORQUE_PATH'"
-alias ytd="vim $(worque --today) +':cd $WORQUE_PATH'"
+alias today="vim $(worque todo) +':cd $WORQUE_PATH'"
+alias ytd="vim $(worque todo) +':cd $WORQUE_PATH'"
 ```
 
 ### VIM Integration
