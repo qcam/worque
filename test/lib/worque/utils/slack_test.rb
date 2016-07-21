@@ -7,13 +7,13 @@ describe Worque::Utils::Slack do
     before do
       stubbed_result = {
         "ok"=>true,
-        "channel"=>"G1TRB0GG1",
+        "channel"=>"secret",
         "ts"=>"1469116417.000010",
         "message" => {
           "type"=>"message",
-          "user"=>"U02G4HZSH",
+          "user"=>"secret",
           "text"=>"Hello World from the other side",
-          "bot_id"=>"B1TQVKF9A",
+          "bot_id"=>"secret",
           "ts"=>"1469116417.000010"
         }
       }.to_json
