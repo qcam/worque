@@ -4,31 +4,33 @@ require 'optparse'
 require 'date'
 require 'worque'
 
-Worque.configure do |config|
-  OptionParser.new do |opts|
-    opts.banner = "Usage: worque [options]"
+options = Worque::Options.parse(ARGV)
+$stdout.puts Worque::Command.run(options)
 
-    opts.on("-h", "--help", 'Print this help') do
-      puts opts
-      exit
-    end
+# Worque.configure do |config|
+#   OptionParser.new do |opts|
+#     opts.banner = "Usage: worque [options]"
+#
+#     opts.on("-h", "--help", 'Print this help') do
+#       puts opts
+#       exit
+#     end
+#
+#     opts.on("--today", "Create and return the file name") do
+#       config[:mode] = :today
+#     end
+#
+#     opts.on("--yesterday", "Create and return the file name") do
+#       config[:mode] = config[:hardcore] ? :yesterday_hardcore : :yesterday
+#     end
+#
+#     opts.on("-pPATH", "--path PATH", "Path to your notes directory") do |path|
+#       config[:path] = path || ENV['WORQUE_PATH']
+#     end
+#   end.parse!
+# end
 
-    opts.on("--today", "Create and return the file name") do
-      config[:mode] = :today
-    end
+# if !Worque.configs[:path] || Worque.configs[:path] == ''
+#   abort "--path or WORQUE_PATH must be set. Use worque --help to see all options."
+# end
 
-    opts.on("--yesterday", "Create and return the file name") do
-      config[:mode] = config[:hardcore] ? :yesterday_hardcore : :yesterday
-    end
-
-    opts.on("-pPATH", "--path PATH", "Path to your notes directory") do |path|
-      config[:path] = path || ENV['WORQUE_PATH']
-    end
-  end.parse!
-end
-
-if !Worque.configs[:path] || Worque.configs[:path] == ''
-  abort "--path or WORQUE_PATH must be set. Use worque --help to see all options."
-end
-
-$stdout.puts Worque::Command.run(Worque.configs)

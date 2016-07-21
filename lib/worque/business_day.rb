@@ -11,14 +11,10 @@ module Worque
     end
 
     def previous_continuous(date)
-      shift_continuous(date, -1)
+      shift(date, -1, false)
     end
 
     private
-
-    def shift_continuous(date, inc)
-      date += inc
-    end
 
     def shift(date, inc, skip_weekend = true)
       loop do

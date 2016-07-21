@@ -10,8 +10,8 @@ describe Worque::Command do
   describe '.run' do
     describe  'when path is not set' do
       it 'raises error' do
-        options = {}
-        assert_raises Worque::Command::WrongOptions do
+        options = Worque::Options.new(path: nil)
+        assert_raises do
           Worque::Command.run(options)
         end
       end
@@ -19,15 +19,33 @@ describe Worque::Command do
 
     describe 'when directory does not exist' do
       it 'creates the directory' do
-        options = { path: 'tmp/hello/word', mode: :today }
+        options = Worque::Options.new(path: 'tmp/hello/word', mode: :today)
         Worque::Command.run(options)
-        assert File.exists?(options[:path])
+        assert File.exists?(options.path)
+      end
+    end
+
+    describe 'when no mode is specified' do
+      it 'creates the file for today' do
+        options = Worque::Options.new(path: 'tmp/hello/word')
+
+        Timecop.freeze(Date.new(2016, 7, 15)) do
+          Worque::Command.run(options)
+
+          assert File.exists?("#{options.path}/checklist-2016-07-15.md")
+        end
       end
     end
 
     describe 'when mode is yesterday' do
-      it 'creates the file ' do
-        skip("Implement later")
+      it 'creates the file for yesterday' do
+        options = Worque::Options.new(path: 'tmp/hello/word', mode: :yesterday)
+
+        Timecop.freeze(Date.new(2016, 7, 15)) do
+          Worque::Command.run(options)
+
+          assert File.exists?("#{options.path}/checklist-2016-07-14.md")
+        end
       end
     end
   end
