@@ -6,8 +6,8 @@ module Worque
       shift(date, 1)
     end
 
-    def previous(date)
-      shift(date, -1)
+    def previous(date, skip_weekend = true)
+      shift(date, -1, skip_weekend)
     end
 
     def previous_continuous(date)
@@ -20,10 +20,10 @@ module Worque
       date += inc
     end
 
-    def shift(date, inc)
+    def shift(date, inc, skip_weekend = true)
       loop do
         date += inc
-        break unless weekend?(date)
+        break if !skip_weekend || !weekend?(date)
       end
       date
     end

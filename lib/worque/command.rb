@@ -3,7 +3,7 @@ module Worque
     extend self
 
     def run(options)
-      path = options[:path]
+      path = options[:path] || raise(WrongOptions, "No path specified")
       mkdir(path)
       file = case options[:mode].to_sym
              when :today
@@ -30,5 +30,7 @@ module Worque
     def touch(path)
       system("touch #{path}")
     end
+
+    class WrongOptions < ::StandardError; end
   end
 end
