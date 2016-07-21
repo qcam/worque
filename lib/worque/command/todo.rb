@@ -1,5 +1,6 @@
 require 'worque/utils/command'
 require 'worque/utils/business_day'
+require 'date'
 
 module Worque
   module Command
