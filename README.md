@@ -125,7 +125,6 @@ Something in my plan:
 * Test suites: Embarrassingly there's no test currently, but this will be my
   first priority.
 * `worque list`: List all notes you have.
-* `worque push`: Push your daily notes to your specified Slack channel.
 * `worque changelog`: Sync your Git commits to daily notes.
 
 ## Contributing

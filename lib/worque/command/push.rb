@@ -1,5 +1,6 @@
 require 'worque/utils/slack'
 require 'worque/utils/business_day'
+require 'json'
 
 module Worque
   module Command
@@ -10,7 +11,7 @@ module Worque
 
       def call
         slack = Worque::Utils::Slack.new(options.token)
-        slack.post(options.channel, report_file_content)
+        JSON.dump(slack.post(options.channel, report_file_content))
       end
 
       def self.run(options)
