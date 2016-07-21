@@ -18,7 +18,7 @@ Worque.configure do |config|
     end
 
     opts.on("--yesterday", "Create and return the file name") do
-      config[:mode] = :yesterday
+      config[:mode] = config[:hardcore] ? :yesterday_hardcore : :yesterday
     end
 
     opts.on("-pPATH", "--path PATH", "Path to your notes directory") do |path|

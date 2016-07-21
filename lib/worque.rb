@@ -8,7 +8,8 @@ module Worque
   def configs
     @configs ||= {
       path: ENV['WORQUE_PATH'],
-      mode: :today
+      mode: :today,
+      hardcore: ENV['WORQUE_HARDCORE'].downcase == 'true'
     }
   end
 

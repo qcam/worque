@@ -10,7 +10,15 @@ module Worque
       shift(date, -1)
     end
 
+    def previous_continuous(date)
+      shift_continuous(date, -1)
+    end
+
     private
+
+    def shift_continuous(date, inc)
+      date += inc
+    end
 
     def shift(date, inc)
       loop do

@@ -10,6 +10,8 @@ module Worque
                filename(path, Date.today)
              when :yesterday
                filename(path, Worque::BusinessDay.previous(Date.today))
+             when :yesterday_hardcore
+               filename(path, Worque::BusinessDay.previous_continuous(Date.today))
              end
       touch file
       return file
