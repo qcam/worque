@@ -122,14 +122,12 @@ bundle exec rake test
 
 Something in my plan:
 
-* Test suites: Embarrassingly there's no test currently, but this will be my
-  first priority.
 * `worque list`: List all notes you have.
 * `worque changelog`: Sync your Git commits to daily notes.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/huynhquancam/worque.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/huynhquancam/worque/issues](https://github.com/huynhquancam/worque/issues).
 
 ## License
 
