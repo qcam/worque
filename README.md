@@ -16,6 +16,11 @@ Install it by
 
     $ gem install worque
 
+Or, if you're using RVM and want the command available system-wide while keeping it in its own gemset
+
+    $ rvm default@worque --create do gem install worque
+    $ rvm wrapper default@worque --no-prefix worque
+
 ## Quick start guide
 
 ### CLI
