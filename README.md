@@ -8,6 +8,14 @@ Worque is a CLI which is helpful to manage your daily notes.
 
 Then worque is definitely a right tool for you!
 
+## HOW IT WORKS
+
+![INTRO](INTRO.gif)
+
+### WITH VIM
+
+![INTRO VIM](INTRO_VIM.gif)
+
 ## Installation
 
 **DO NOT add this to your Gemfile**
@@ -82,7 +90,7 @@ alias today="vim $(worque todo) +':cd $WORQUE_PATH'"
 alias ytd="vim $(worque todo) +':cd $WORQUE_PATH'"
 ```
 
-#### `worque todo`
+#### `worque push`
 
 Please remember to add `SLACK_API_TOKEN` in your `.bash_profile`
 
