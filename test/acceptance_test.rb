@@ -57,7 +57,7 @@ describe Worque do
       Timecop.freeze(date) do
         ARGV.replace %w[todo --task "foo"]
         Worque::CLI.start
-        assert_equal($stdout.string, "tmp/for/test/notes-2016-07-24.md\n")
+        assert_equal("tmp/for/test/notes-2016-07-24.md\n", $stdout.string)
       end
     end
   end
