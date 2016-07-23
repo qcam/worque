@@ -12,6 +12,12 @@ module Worque
       def touch(path)
         FileUtils.touch(path)
       end
+
+      def append_text(path, text)
+        File.open(path, 'a') { |f|
+          f.puts "#{text}\n"
+        }
+      end
     end
   end
 end

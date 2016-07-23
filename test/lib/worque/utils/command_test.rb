@@ -40,5 +40,18 @@ describe Worque::Utils::Command do
       assert File.exists?(path)
     end
   end
-end
 
+  describe '.append_text' do
+    it 'append text to file' do
+      dir = 'tmp'
+      @helper.mkdir(dir)
+
+      path = 'tmp/text.txt'
+      @helper.touch(path)
+
+      text = 'foo'
+      @helper.append_text(path, text)
+      assert File.readlines(path).grep(/#{text}/).any?
+    end
+  end
+end

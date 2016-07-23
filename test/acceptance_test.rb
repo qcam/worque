@@ -11,7 +11,7 @@ describe Worque do
     before do
       $stdout = StringIO.new
     end
-    
+
     after do
       system "rm -rf tmp/*"
     end
@@ -49,6 +49,15 @@ describe Worque do
         ARGV.replace %w[todo --for yesterday --no-skip-weekend]
         Worque::CLI.start
         assert_equal($stdout.string, "tmp/for/test/notes-2016-07-17.md\n")
+      end
+    end
+
+    it 'append task to notes' do
+      date = Date.new(2016, 7, 24)
+      Timecop.freeze(date) do
+        ARGV.replace %w[todo --task "foo"]
+        Worque::CLI.start
+        assert_equal($stdout.string, "tmp/for/test/notes-2016-07-24.md\n")
       end
     end
   end
