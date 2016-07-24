@@ -15,7 +15,7 @@ module Worque
       private
 
       def post_form(channel, message)
-        uri = URI('https://slack.com/api/chat.postMessage')
+        uri = URI.parse('https://slack.com/api/chat.postMessage')
         Net::HTTP.post_form(uri, as_user: true, channel: channel, token: @token, text: message)
       end
     end
