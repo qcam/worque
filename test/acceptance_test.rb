@@ -11,7 +11,7 @@ describe Worque do
     before do
       $stdout = StringIO.new
     end
-    
+
     after do
       system "rm -rf tmp/*"
     end
@@ -21,7 +21,7 @@ describe Worque do
       Timecop.freeze(date) do
         ARGV.replace %w[todo]
         Worque::CLI.start
-        assert_equal($stdout.string, "tmp/for/test/notes-2016-07-14.md\n")
+        assert_equal("tmp/for/test/notes-2016-07-14.md", $stdout.string.strip)
       end
     end
 
@@ -30,7 +30,7 @@ describe Worque do
       Timecop.freeze(date) do
         ARGV.replace %w[todo --for yesterday]
         Worque::CLI.start
-        assert_equal($stdout.string, "tmp/for/test/notes-2016-07-13.md\n")
+        assert_equal("tmp/for/test/notes-2016-07-13.md", $stdout.string.strip)
       end
     end
 
@@ -39,7 +39,7 @@ describe Worque do
       Timecop.freeze(date) do
         ARGV.replace %w[todo --for=yesterday]
         Worque::CLI.start
-        assert_equal($stdout.string, "tmp/for/test/notes-2016-07-15.md\n")
+        assert_equal("tmp/for/test/notes-2016-07-15.md", $stdout.string.strip)
       end
     end
 
@@ -48,7 +48,7 @@ describe Worque do
       Timecop.freeze(date) do
         ARGV.replace %w[todo --for yesterday --no-skip-weekend]
         Worque::CLI.start
-        assert_equal($stdout.string, "tmp/for/test/notes-2016-07-17.md\n")
+        assert_equal("tmp/for/test/notes-2016-07-17.md", $stdout.string.strip)
       end
     end
   end
@@ -71,7 +71,7 @@ describe Worque do
       Timecop.freeze(date) do
         ARGV.replace %w[push]
         Worque::CLI.start
-        assert_equal($stderr.string, "No value provided for required options '--channel'\n")
+        assert_equal("No value provided for required options '--channel'", $stderr.string.strip)
       end
     end
 

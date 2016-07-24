@@ -9,17 +9,17 @@ describe Worque::Utils::BusinessDay do
   describe '.previous' do
     it 'returns the previous day' do
       thursday = Date.new(2016, 7, 14)
-      assert_equal @helper.previous(thursday).wday, 3
+      assert_equal 3, @helper.previous(thursday).wday
     end
 
     it 'skips weekend by default' do
       monday = Date.new(2016, 7, 18)
-      assert_equal @helper.previous(monday).wday, 5
+      assert_equal 5, @helper.previous(monday).wday
     end
 
     it 'does not skip weekend if skip_weekend is set' do
       monday = Date.new(2016, 7, 18)
-      assert_equal @helper.previous(monday, false).wday, 0
+      assert_equal 0, @helper.previous(monday, false).wday
     end
   end
 end
