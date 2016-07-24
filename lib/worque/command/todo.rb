@@ -17,8 +17,8 @@ module Worque
           Worque::Utils::Command.touch f
         end
 
-        if options.task
-          Worque::Utils::Command.append_text(notes_file_path, options.task)
+        if options.append_task
+          Worque::Utils::Command.append_text(notes_file_path, options.append_task)
         end
 
         notes_file_path

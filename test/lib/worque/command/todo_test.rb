@@ -29,7 +29,7 @@ describe Worque::Command::Todo do
 
     describe 'when mode is adding task' do
       it 'append task title to notes' do
-        options = { path: 'tmp/hello/word', for: 'today', task: 'foo' }
+        options = { path: 'tmp/hello/word', for: 'today', append_task: 'foo' }
 
         Timecop.freeze(Date.new(2016, 7, 24)) do
           Worque::Command::Todo.run(options)
