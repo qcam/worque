@@ -12,9 +12,16 @@ module Worque
       def call
         Worque::Utils::Command.mkdir(options.path)
 
-        filename(date_for).tap do |f|
+        notes_file_path = filename(date_for)
+        notes_file_path.tap do |f|
           Worque::Utils::Command.touch f
         end
+
+        if options.append_task
+          Worque::Utils::Command.append_text(notes_file_path, options.append_task)
+        end
+
+        notes_file_path
       end
 
       def self.run(options)

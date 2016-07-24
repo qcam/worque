@@ -76,6 +76,11 @@ You can also explicitly specify the file path
 worque todo --for today --path ~/path/to/your/notes
 ```
 
+Moreover, you can add a task into your notes quickly without open that file.
+```sh
+worque todo --for today --append-task "Your task"
+```
+
 It's chain-able with other commands
 
 ```sh
@@ -148,4 +153,3 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/huynh
 
 The gem is available as open source under the terms of the
 [MIT License](http://opensource.org/licenses/MIT).
-

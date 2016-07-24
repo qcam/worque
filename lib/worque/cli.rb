@@ -13,6 +13,7 @@ module Worque
     method_option :for, force: false, type: :string, enum: ['today', 'yesterday'], default: 'today'
     method_option :skip_weekend, force: false, type: :boolean, default: true
     method_option :path, force: false, type: :string, default: ENV['WORQUE_PATH']
+    method_option :append_task, force: false, type: :string
 
     def todo
       $stdout.puts Worque::Command::Todo.run(options)

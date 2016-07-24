@@ -51,6 +51,15 @@ describe Worque do
         assert_equal("tmp/for/test/notes-2016-07-17.md", $stdout.string.strip)
       end
     end
+
+    it 'append task to notes' do
+      date = Date.new(2016, 7, 24)
+      Timecop.freeze(date) do
+        ARGV.replace %w[todo --append-task "foo"]
+        Worque::CLI.start
+        assert_equal("tmp/for/test/notes-2016-07-24.md\n", $stdout.string)
+      end
+    end
   end
 
   describe 'push' do
