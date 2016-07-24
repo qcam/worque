@@ -1,4 +1,6 @@
 # Worque
+[![Build Status](https://travis-ci.org/huynhquancam/worque.svg?branch=travis_config)](https://travis-ci.org/huynhquancam/worque)
+[![Gem Version](https://badge.fury.io/rb/worque.svg)](https://badge.fury.io/rb/worque)
 
 Worque is a CLI which is helpful to manage your daily notes.
 

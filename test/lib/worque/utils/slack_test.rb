@@ -18,8 +18,11 @@ describe Worque::Utils::Slack do
         }
       }.to_json
 
-      stub_request(:any, 'https://slack.com/api/chat.postMessage')
-        .to_return(body: stubbed_result)
+    stub_request(:post, "http://slack.com:443/api/chat.postMessage").
+      to_return(status: 200, body: stubbed_result, headers: {})
+
+    stub_request(:post, "https://slack.com/api/chat.postMessage").
+      to_return(status: 200, body: stubbed_result, headers: {})
     end
 
     it 'posts message to slack' do

@@ -1,5 +1,17 @@
 sudo: false
 language: ruby
+bundler_args: --without tools
+cache: bundler
 rvm:
-  - 2.2.3
+  - 1.9.3
+  - 2.0
+  - 2.1
+  - 2.2
+  - jruby
+  - rbx
+  - ruby-head
 before_install: gem install bundler -v 1.12.5
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: rbx
