@@ -4,4 +4,3 @@ require 'rubygems'
 require 'worque'
 
 Worque::CLI.start
-
