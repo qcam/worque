@@ -7,6 +7,7 @@ module Worque
     class Todo
       def initialize(options)
         @options = options
+        validate_options!
       end
 
       def call
@@ -45,6 +46,12 @@ module Worque
 
       def filename(date)
         "#{options.path}/notes-#{date}.md"
+      end
+
+      def validate_options!
+        if options.path.to_s.empty?
+          raise InvalidPath, 'Neither --path nor WORQUE_PATH is not set'
+        end
       end
     end
   end

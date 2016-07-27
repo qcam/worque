@@ -60,6 +60,17 @@ describe Worque do
         assert_equal("tmp/for/test/notes-2016-07-24.md\n", $stdout.string)
       end
     end
+
+    it 'should notify user when path is not set' do
+      begin
+        $stderr = StringIO.new
+        Worque::Command::Todo.run({})
+      rescue Worque::InvalidPath => e
+        assert_equal('Neither --path nor WORQUE_PATH is not set', e.message)
+      ensure
+        $stderr = IO.for_fd(2)
+      end
+    end
   end
 
   describe 'push' do

@@ -16,7 +16,13 @@ module Worque
     method_option :append_task, force: false, type: :string
 
     def todo
-      $stdout.puts Worque::Command::Todo.run(options)
+      begin
+        result = Worque::Command::Todo.run(options)
+      rescue InvalidPath => e
+        abort e.message
+      end
+
+      $stdout.puts result
     end
 
     desc 'push', 'Push your notes to Slack channel'
