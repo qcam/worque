@@ -68,7 +68,7 @@ describe Worque do
       rescue Worque::InvalidPath => e
         assert_equal('Neither --path nor WORQUE_PATH is not set', e.message)
       ensure
-        $stderr = IO.for_fd(1)
+        $stderr = IO.for_fd(2)
       end
     end
   end
