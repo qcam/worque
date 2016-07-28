@@ -10,10 +10,10 @@ module Worque
 
     desc 'todo', 'Make a todo'
 
-    method_option :for, force: false, type: :string, enum: ['today', 'yesterday'], default: 'today'
-    method_option :skip_weekend, force: false, type: :boolean, default: true
-    method_option :path, force: false, type: :string, default: ENV['WORQUE_PATH']
-    method_option :append_task, force: false, type: :string
+    method_option :for, type: :string, enum: ['today', 'yesterday'], default: 'today'
+    method_option :skip_weekend, type: :boolean, default: true
+    method_option :path, type: :string, default: ENV['WORQUE_PATH']
+    method_option :append_task, type: :string
 
     def todo
       begin
@@ -27,8 +27,8 @@ module Worque
 
     desc 'push', 'Push your notes to Slack channel'
 
-    method_option :for, force: false, type: :string, enum: ['today', 'yesterday'], default: 'today'
-    method_option :channel, force: true, required: true, type: :string, desc: 'Can be channel, private group ID or name. E.g. #daily-report'
+    method_option :for, type: :string, enum: ['today', 'yesterday'], default: 'today'
+    method_option :channel, required: true, type: :string, desc: 'Can be channel, private group ID or name. E.g. #daily-report'
 
     def push
       $stdout.puts Worque::Command::Push.run(options)
