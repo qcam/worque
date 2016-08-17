@@ -59,7 +59,7 @@ worque todo --for today
 Or look back what's done yesterday.
 
 ```sh
-workque todo --for=yesterday
+worque todo --for=yesterday
 # ~/notes/checklist-2016-07-18.md
 # This will jump back to Friday's note if it's Monday today!
 ```
@@ -94,7 +94,7 @@ file when I type `today`
 
 ```sh
 alias today="vim $(worque todo) +':cd $WORQUE_PATH'"
-alias ytd="vim $(worque todo) +':cd $WORQUE_PATH'"
+alias ytd="vim $(worque todo --for=yesterday) +':cd $WORQUE_PATH'"
 ```
 
 #### `worque push`
