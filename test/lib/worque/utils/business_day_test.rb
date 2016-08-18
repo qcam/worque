@@ -14,7 +14,7 @@ describe Worque::Utils::BusinessDay do
 
     it 'skips weekend by default' do
       friday = Date.new(2016, 7, 15)
-      assert_equal 0, @helper.next(friday).wday
+      assert_equal 1, @helper.next(friday).wday
     end
 
     it 'does not skip weekend if skip_weekend is set' do
