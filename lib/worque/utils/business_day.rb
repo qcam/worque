@@ -3,8 +3,8 @@ module Worque
     module BusinessDay
       extend self
 
-      def next(date)
-        shift(date, 1)
+      def next(date, skip_weekend = true)
+        shift(date, 1, skip_weekend)
       end
 
       def previous(date, skip_weekend = true)

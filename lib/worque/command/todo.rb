@@ -41,6 +41,8 @@ module Worque
           Date.today
         when :yesterday
           Worque::Utils::BusinessDay.previous(Date.today, options.skip_weekend?)
+        when :tomorrow
+          Worque::Utils::BusinessDay.next(Date.today, options.skip_weekend?)
         end
       end
 
