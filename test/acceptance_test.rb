@@ -33,6 +33,16 @@ describe Worque do
         assert_equal("tmp/for/test/notes-2016-07-13.md", $stdout.string.strip)
       end
     end
+    
+    it 'creates a notes for tomorrow' do
+      date = Date.new(2016, 7, 14)
+      Timecop.freeze(date) do
+        ARGV.replace %w[todo --for tomorrow]
+        Worque::CLI.start
+        assert_equal("tmp/for/test/notes-2016-07-15.md", $stdout.string.strip)
+      end
+    end
+
 
     it 'creates a notes for last friday if today is Monday and skip weekend is set' do
       date = Date.new(2016, 7, 18)
