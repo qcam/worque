@@ -1,7 +1,7 @@
 require 'thor'
-require 'worque/command/todo'
+require 'worque/command/todo/action'
 require 'worque/command/todo/options'
-require 'worque/command/push'
+require 'worque/command/push/action'
 require 'worque/command/push/options'
 
 module Worque
@@ -17,7 +17,7 @@ module Worque
 
     def todo
       begin
-        result = Worque::Command::Todo.run(options)
+        result = Worque::Command::Todo::Action.run(options)
       rescue InvalidPath => e
         abort e.message
       end
@@ -31,7 +31,7 @@ module Worque
     method_option :channel, required: true, type: :string, desc: 'Can be channel, private group ID or name. E.g. #daily-report'
 
     def push
-      $stdout.puts Worque::Command::Push.run(options)
+      $stdout.puts Worque::Command::Push::Action.run(options)
     end
   end
 end

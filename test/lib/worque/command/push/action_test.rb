@@ -1,13 +1,16 @@
 require 'test_helper'
 require 'webmock/minitest'
 
-describe Worque::Command::Push do
+describe Worque::Command::Push::Action do
+  let(:action) { Worque::Command::Push::Action }
+
   before do
     # Clean up tmp directory
     options = { path: 'tmp/hello/word', for: 'today' }
-    Worque::Command::Todo.run(options)
     ENV['WORQUE_PATH'] = options[:path]
     ENV['SLACK_API_TOKEN'] = 'test-token'
+
+    Worque::Command::Todo::Action.run(options)
 
     # Stub Slack API call
     stubbed_result = {
@@ -34,7 +37,7 @@ describe Worque::Command::Push do
 
   describe '#call' do
     it 'pushes the file to Slack' do
-      result = Worque::Command::Push.run(channel: 'test', for: 'today')
+      result = action.run(channel: 'test', for: 'today')
 
       assert(result['ok'])
     end

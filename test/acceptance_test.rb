@@ -33,7 +33,7 @@ describe Worque do
         assert_equal("tmp/for/test/notes-2016-07-13.md", $stdout.string.strip)
       end
     end
-    
+
     it 'creates a notes for tomorrow' do
       date = Date.new(2016, 7, 14)
       Timecop.freeze(date) do
@@ -74,7 +74,7 @@ describe Worque do
     it 'should notify user when path is not set' do
       begin
         $stderr = StringIO.new
-        Worque::Command::Todo.run({})
+        Worque::Command::Todo::Action.run({})
       rescue Worque::InvalidPath => e
         assert_equal('Neither --path nor WORQUE_PATH is not set', e.message)
       ensure
@@ -89,7 +89,7 @@ describe Worque do
       @today = Date.new(2016, 7, 14)
 
       Timecop.freeze(@today) do
-        Worque::Command::Todo.run(path: @path, for: 'today')
+        Worque::Command::Todo::Action.run(path: @path, for: 'today')
       end
 
       $stdout = StringIO.new
