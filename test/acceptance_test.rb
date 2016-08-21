@@ -1,5 +1,3 @@
-ENV['WORQUE_PATH'] = 'tmp/for/test'
-
 require 'test_helper'
 require 'worque'
 require 'thor/runner'
@@ -19,7 +17,7 @@ describe Worque do
     it 'creates a notes for today' do
       date = Date.new(2016, 7, 14)
       Timecop.freeze(date) do
-        ARGV.replace %w[todo]
+        ARGV.replace %w[todo --path tmp/for/test]
         Worque::CLI.start
         assert_equal("tmp/for/test/notes-2016-07-14.md", $stdout.string.strip)
       end
@@ -28,7 +26,7 @@ describe Worque do
     it 'creates a notes for yesterday' do
       date = Date.new(2016, 7, 14)
       Timecop.freeze(date) do
-        ARGV.replace %w[todo --for yesterday]
+        ARGV.replace %w[todo --for yesterday --path tmp/for/test]
         Worque::CLI.start
         assert_equal("tmp/for/test/notes-2016-07-13.md", $stdout.string.strip)
       end
@@ -37,7 +35,7 @@ describe Worque do
     it 'creates a notes for tomorrow' do
       date = Date.new(2016, 7, 14)
       Timecop.freeze(date) do
-        ARGV.replace %w[todo --for tomorrow]
+        ARGV.replace %w[todo --for tomorrow --path tmp/for/test]
         Worque::CLI.start
         assert_equal("tmp/for/test/notes-2016-07-15.md", $stdout.string.strip)
       end
@@ -47,7 +45,7 @@ describe Worque do
     it 'creates a notes for last friday if today is Monday and skip weekend is set' do
       date = Date.new(2016, 7, 18)
       Timecop.freeze(date) do
-        ARGV.replace %w[todo --for=yesterday]
+        ARGV.replace %w[todo --for=yesterday --path tmp/for/test]
         Worque::CLI.start
         assert_equal("tmp/for/test/notes-2016-07-15.md", $stdout.string.strip)
       end
@@ -56,7 +54,7 @@ describe Worque do
     it 'creates a notes for sunday if today is Monday and NO skip weekend is set' do
       date = Date.new(2016, 7, 18)
       Timecop.freeze(date) do
-        ARGV.replace %w[todo --for yesterday --no-skip-weekend]
+        ARGV.replace %w[todo --for yesterday --no-skip-weekend --path tmp/for/test]
         Worque::CLI.start
         assert_equal("tmp/for/test/notes-2016-07-17.md", $stdout.string.strip)
       end
@@ -65,7 +63,7 @@ describe Worque do
     it 'append task to notes' do
       date = Date.new(2016, 7, 24)
       Timecop.freeze(date) do
-        ARGV.replace %w[todo --append-task "foo"]
+        ARGV.replace %w[todo --path tmp/for/test --append-task "foo"]
         Worque::CLI.start
         assert_equal("tmp/for/test/notes-2016-07-24.md\n", $stdout.string)
       end
@@ -79,6 +77,19 @@ describe Worque do
         assert_equal('Neither --path nor WORQUE_PATH is not set', e.message)
       ensure
         $stderr = IO.for_fd(2)
+      end
+    end
+
+    describe '~/.worquerc exists' do
+      it 'takes ~/.worquerc by default' do
+        date = Date.new(2016, 7, 14)
+        Timecop.freeze(date) do
+          File.stub(:read, {path: 'tmp/test'}.to_json) do
+            ARGV.replace %w[todo]
+            Worque::CLI.start
+            assert_equal("tmp/test/notes-2016-07-14.md\n", $stdout.string)
+          end
+        end
       end
     end
   end
