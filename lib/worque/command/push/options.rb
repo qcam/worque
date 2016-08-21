@@ -8,7 +8,7 @@ module Worque
       def initialize(options)
         @channel = options[:channel]
         @for = options[:for]
-        @token = ENV['SLACK_API_TOKEN']
+        @token = options[:token]
       end
     end
   end
