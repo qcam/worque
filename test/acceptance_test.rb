@@ -118,7 +118,6 @@ describe Worque do
 
     describe 'channel are specified' do
       it 'pushes the notes today to Slack channel' do
-        ENV['SLACK_API_TOKEN'] = 'test-token'
         stubbed_result = {
           "ok"=>true,
           "channel"=>"secret",
@@ -134,9 +133,9 @@ describe Worque do
 
         stub_request(:post, "https://slack.com/api/chat.postMessage").
           to_return(:status => 200, :body => stubbed_result, :headers => {})
-
         stub_request(:post, "http://slack.com:443/api/chat.postMessage").
           to_return(:status => 200, :body => stubbed_result, :headers => {})
+
         date = Date.new(2016, 7, 14)
         Timecop.freeze(date) do
           ARGV.replace %w[push --channel=hello]

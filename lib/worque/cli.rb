@@ -33,7 +33,8 @@ module Worque
     method_option :channel, required: true, type: :string, desc: 'Can be channel, private group ID or name. E.g. #daily-report'
 
     def push
-      $stdout.puts Worque::Command::Push::Action.run(options)
+      default_opts = Worque::DefaultConfig.load!.data
+      $stdout.puts Worque::Command::Push::Action.run(default_opts.merge options)
     end
   end
 end
