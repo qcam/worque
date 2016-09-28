@@ -145,7 +145,7 @@ bundle install
 bundle exec rake test
 ```
 
-## To be implemented
+## WORKQUE FOR WORKQUE
 
 Something in my plan:
 
@@ -154,7 +154,8 @@ Something in my plan:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/huynhquancam/worque/issues](https://github.com/huynhquancam/worque/issues).
+Bug reports and pull requests are welcome on GitHub at
+[https://github.com/huynhquancam/worque/issues](https://github.com/huynhquancam/worque/issues).
 
 ## License
 
