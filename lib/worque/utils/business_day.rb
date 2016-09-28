@@ -18,11 +18,9 @@ module Worque
       private
 
       def shift(date, inc, skip_weekend = true)
-        loop do
-          date += inc
-          break if !skip_weekend || !weekend?(date)
-        end
-        date
+        return date + inc unless skip_weekend && weekend?(date + inc)
+
+        shift(date + inc, inc, skip_weekend)
       end
 
       def weekend?(date)
