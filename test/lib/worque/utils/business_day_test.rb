@@ -22,7 +22,7 @@ describe Worque::Utils::BusinessDay do
       assert_equal 6, @helper.next(friday, false).wday
     end
   end
-  
+
   describe '.previous' do
     it 'returns the previous day' do
       thursday = Date.new(2016, 7, 14)
@@ -40,4 +40,3 @@ describe Worque::Utils::BusinessDay do
     end
   end
 end
-
