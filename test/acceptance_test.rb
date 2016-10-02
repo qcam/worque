@@ -96,6 +96,7 @@ describe Worque do
 
   describe 'push' do
     before do
+      ENV['WORQUE_PATH']= 'tmp/test'
       @path = ENV['WORQUE_PATH']
       @today = Date.new(2016, 7, 14)
 
