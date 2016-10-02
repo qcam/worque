@@ -6,6 +6,8 @@ module Worque
   module Command
     module Push
       class Action
+        REPORT_FILE_PATH_FORMAT = "%<worque_path>s/notes-%<date_for>s.md".freeze
+
         def initialize(options)
           @options = options
         end
@@ -41,7 +43,10 @@ module Worque
         end
 
         def report_file_path
-          "#{ ENV['WORQUE_PATH'] }/notes-#{date_for}.md"
+          REPORT_FILE_PATH_FORMAT % Hash[
+            worque_path: ENV['WORQUE_PATH'],
+            date_for: date_for
+          ]
         end
       end
     end
