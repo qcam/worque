@@ -6,6 +6,8 @@ module Worque
   module Command
     module Todo
       class Action
+        FILE_PATH_FORMAT = "%<path>s/notes-%<date>s.md".freeze
+
         def initialize(options)
           @options = options
           validate_options!
@@ -47,7 +49,7 @@ module Worque
         end
 
         def filename(date)
-          "#{options.path}/notes-#{date}.md"
+          FILE_PATH_FORMAT % { path: options.path, date: date }
         end
 
         def validate_options!
