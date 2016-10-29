@@ -44,7 +44,7 @@ module Worque
 
         def report_file_path
           REPORT_FILE_PATH_FORMAT % Hash[
-            worque_path: ENV['WORQUE_PATH'],
+            worque_path: options.path,
             date_for: date_for
           ]
         end

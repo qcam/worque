@@ -29,6 +29,7 @@ module Worque
 
     desc 'push', 'Push your notes to Slack channel'
 
+    method_option :path, type: :string
     method_option :for, type: :string, enum: ['today', 'yesterday', 'tomorrow'], default: 'today'
     method_option :channel, required: true, type: :string, desc: 'Can be channel, private group ID or name. E.g. #daily-report'
 

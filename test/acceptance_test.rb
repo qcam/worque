@@ -96,8 +96,7 @@ describe Worque do
 
   describe 'push' do
     before do
-      ENV['WORQUE_PATH']= 'tmp/test'
-      @path = ENV['WORQUE_PATH']
+      @path = '/tmp/test'
       @today = Date.new(2016, 7, 14)
 
       Timecop.freeze(@today) do
@@ -139,7 +138,7 @@ describe Worque do
 
         date = Date.new(2016, 7, 14)
         Timecop.freeze(date) do
-          ARGV.replace %w[push --channel=hello]
+          ARGV.replace ["push", "--path=#{@path}", "--channel=hello"]
           Worque::CLI.start
           result = JSON.parse($stdout.string.strip)
           assert(result['ok'])

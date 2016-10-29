@@ -6,8 +6,7 @@ describe Worque::Command::Push::Action do
 
   before do
     # Clean up tmp directory
-    options = { path: 'tmp/hello/word', for: 'today' }
-    ENV['WORQUE_PATH'] = options[:path]
+    options = { path: 'tmp/hello/world', for: 'today' }
     ENV['SLACK_API_TOKEN'] = 'test-token'
 
     Worque::Command::Todo::Action.run(options)
@@ -37,7 +36,7 @@ describe Worque::Command::Push::Action do
 
   describe '#call' do
     it 'pushes the file to Slack' do
-      result = action.run(channel: 'test', for: 'today')
+      result = action.run(path: 'tmp/hello/world/', channel: 'test', for: 'today')
 
       assert(result['ok'])
     end
