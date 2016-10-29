@@ -2,8 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [0.2.0]
 ### Added
+* Retire `ENV['WORQUE_PATH']` in favor of `.worquerc`
 * `--for tomorrow` implemented by @ds0001.
 * Fix Command typos by @ds0001.
 * Remove unused force option by @poporul.

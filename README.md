@@ -37,19 +37,30 @@ Or, if you're using RVM and want the command available system-wide while keeping
 
 #### `worque todo`
 
-Add this to your `.bash_profile`
+Explicitly declare your path
 
 ```sh
-export WORQUE_PATH='/path/to/your/notes'
+worque todo --path /path/to/your/notes
 ```
 
-I often map it to my Dropbox like this
+Or you might want to put it in the global configuration file `~/.worquerc`
+
+```json
+{
+  "path": "/path/to/your/notes"
+}
+```
+
+
+I often prefer mapping notes to my Dropbox like this:
 
 ```sh
-export WORQUE_PATH='~/Dropbox/Notes/Todos'
+{
+  "path": "~/Dropbox/Notes/Todos"
+}
 ```
 
-Then executing the command below will create a today's note for you
+Then executing the command below will create a today's note.
 
 ```sh
 worque todo --for today
@@ -77,12 +88,6 @@ If you're kind of nerd and you have no life. You would rather work over the week
 worque todo --for yesterday --no-skip-weekend
 ```
 
-You can also explicitly specify the file path
-
-```sh
-worque todo --for today --path ~/path/to/your/notes
-```
-
 Moreover, you can add a task into your notes quickly without open that file.
 ```sh
 worque todo --for today --append-task "Your task"
@@ -100,8 +105,8 @@ Personally I alias it like `today` like this, so vim will automatically open the
 file when I type `today`
 
 ```sh
-alias today="vim $(worque todo) +':cd $WORQUE_PATH'"
-alias ytd="vim $(worque todo --for=yesterday) +':cd $WORQUE_PATH'"
+alias today="vim $(worque todo)"
+alias ytd="vim $(worque todo --for=yesterday)"
 ```
 
 #### `worque push`
