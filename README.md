@@ -101,12 +101,11 @@ vim $(worque todo --for yesterday)
 cat $(worque todo --for=yesterday) | grep pending
 ```
 
-Personally I alias it like `today` like this, so vim will automatically open the
-file when I type `today`
+Personally I like to create a shell function `today` like this, so vim will automatically open the file when I type `today`
 
 ```sh
-alias today="vim $(worque todo)"
-alias ytd="vim $(worque todo --for=yesterday)"
+today () { vim $(worque todo); }
+ytd () { vim $(worque todo --for=yesterday); }
 ```
 
 #### `worque push`
