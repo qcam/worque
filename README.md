@@ -110,10 +110,12 @@ ytd () { vim $(worque todo --for=yesterday); }
 
 #### `worque push`
 
-Please remember to add `SLACK_API_TOKEN` in your `.bash_profile`
+Please remember to add your [slack api token](https://api.slack.com/docs/oauth-test-tokens) to your `~/.worquerc`
 
-```sh
-export SLACK_API_TOKEN=very-$3Cr3T
+```json
+{
+  "token": "very-$3Cr3T"
+}
 ```
 
 Then the note for today will be automatically posted to the channel specified.
