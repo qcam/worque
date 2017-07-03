@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   end
 
   # spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.files = Dir.glob("{bin,lib}/**/*") + %w(LICENSE.txt README.md)
+  spec.files = Dir.glob("{bin,lib}/**/*") + %w(LICENSE README.md)
   spec.bindir        = "bin"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.executables   << 'worque'
