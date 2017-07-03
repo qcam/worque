@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Manage your daily working list}
   spec.description   = %q{Manage your daily working list in Ruby}
-  spec.homepage      = "https://github.com/huynhquancam/worque"
+  spec.homepage      = "https://github.com/qcam/worque"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

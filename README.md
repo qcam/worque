@@ -26,11 +26,6 @@ Install it by
 
     $ gem install worque
 
-Or, if you're using RVM and want the command available system-wide while keeping it in its own gemset
-
-    $ rvm default@worque --create do gem install worque
-    $ rvm wrapper default@worque --no-prefix worque
-
 ## Quick start guide
 
 ### CLI
@@ -75,11 +70,34 @@ worque todo --for=yesterday
 # This will jump back to Friday's note if it's Monday today!
 ```
 
-Lastly, jump ahead and start to plan for tomorrow.
+If you live in the future
 
 ```sh
 worque todo --for=tomorrow
 # ~/notes/checklist-2016-07-20.md
+```
+
+If you want to start from a default template
+
+```sh
+echo <<-EOF
+List of things I need to do
+
+* ......
+* ...
+
+Happy hacking
+EOF >> /path/to/my/template
+
+worque todo --template-path=/path/to/my/template
+# ~/notes/checklist-2016-07-18.md
+cat ~/notes/checklist-2016-07-18.md
+> List of things I need to do
+>
+> * ......
+> * ...
+>
+> Happy hacking
 ```
 
 If you're kind of nerd and you have no life. You would rather work over the weekend than hanging out with folks, so you should enable the **hardcore** mode which will stop skipping weekend for you.
