@@ -20,6 +20,11 @@ module Worque
             Worque::Utils::Command.touch f
           end
 
+          if options.template_path && File.read(notes_file_path) == ""
+            template = File.read(File.expand_path(options.template_path))
+            Worque::Utils::Command.append_text(notes_file_path, template)
+          end
+
           if options.append_task
             Worque::Utils::Command.append_text(notes_file_path, options.append_task)
           end

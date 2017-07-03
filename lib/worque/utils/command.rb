@@ -14,9 +14,9 @@ module Worque
       end
 
       def append_text(path, text)
-        File.open(path, 'a') { |f|
+        File.open(path, 'a') do |f|
           f.puts "#{text}\n"
-        }
+        end
       end
     end
   end

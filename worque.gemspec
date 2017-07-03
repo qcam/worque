@@ -37,4 +37,3 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "timecop", "~> 0.8.1"
   spec.add_development_dependency "webmock", "~> 2.1"
 end
-

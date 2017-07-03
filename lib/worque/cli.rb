@@ -15,6 +15,7 @@ module Worque
     method_option :skip_weekend, type: :boolean, default: true
     method_option :path, type: :string
     method_option :append_task, type: :string
+    method_option :template_path, type: :string
 
     def todo
       begin
