@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.0]
+## Added
+* Support default template path
+
+## Changed
+* Drop Ruby 1.9 support
+
 ## [0.2.0]
 ### Added
 * Retire `ENV['WORQUE_PATH']` in favor of `.worquerc`
